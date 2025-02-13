@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <vector> // Include vector for dynamic array
+#include <vector>
+
 using namespace std;
 
 class Employee {
@@ -10,15 +11,12 @@ private:
     double salary;
 
 public:
-    // Constructor using initializer list
     Employee(string empName, int empId, double empSalary)
         : name(empName), id(empId), salary(empSalary) {}
 
-    // Copy Constructor
     Employee(const Employee &emp) 
         : name(emp.name), id(emp.id), salary(emp.salary) {}
 
-    // Display Employee Details
     void display() const {
         cout << "Employee ID: " << id << "\n";
         cout << "Name: " << name << "\n";
@@ -32,9 +30,8 @@ int main() {
     cout << "Enter the number of employees: ";
     cin >> numEmployees;
     
-    vector<Employee> employees; // Use vector instead of raw array
+    vector<Employee> employees;
     
-    // Taking employee details from the user
     for (int i = 0; i < numEmployees; i++) {
         string name;
         int id;
@@ -49,16 +46,14 @@ int main() {
         cout << "Salary: ";
         cin >> salary;
         
-        employees.emplace_back(name, id, salary); // Construct Employee in place
+        employees.emplace_back(name, id, salary);
     }
     
-    // Displaying original employee details
     cout << "\nOriginal Employee Details:\n";
     for (const auto& emp : employees) {
         emp.display();
     }
     
-    // Copying an employee object using the copy constructor
     Employee copiedEmployee = employees[0];
     
     cout << "Copied Employee Details:\n";
